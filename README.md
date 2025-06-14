@@ -40,4 +40,5 @@ Based on the results table above, several conclusions can be drawn:
 The best configuration in this series of tests was the **Adam optimizer** with a **learning rate of $10^{-4}$** and a **batch size of 32**. This setup successfully trained the Vision Transformer model to achieve an accuracy of **97.71%** on the test data, demonstrating its excellent capability in distinguishing between malaria-infected and uninfected cells.
 
 model : https://huggingface.co/docs/transformers/en/model_doc/vit#vision-transformer-vit
+
 dataset : https://www.kaggle.com/datasets/iarunava/cell-images-for-detecting-malaria
