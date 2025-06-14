@@ -1,6 +1,7 @@
 ## Malaria Cell Classification Using Vision Transformer (ViT)
 
-**Project Objective** 🔬\\
+**Project Objective** 🔬
+
 This project aims to build a deep learning model capable of classifying images of red blood cells as either **"Parasitized"** (infected with malaria) or **"Uninfected"**. The model employed is a **Vision Transformer (ViT)**, specifically the `google/vit-base-patch16-224` pretrained model, which has been adapted for this binary classification task.
 
 **Methodology** ⚙️
