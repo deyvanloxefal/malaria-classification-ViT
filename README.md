@@ -1,6 +1,6 @@
 ## Malaria Cell Classification Using Vision Transformer (ViT)
 
-**Project Objective** 🔬
+**Project Objective** 🔬\\
 This project aims to build a deep learning model capable of classifying images of red blood cells as either **"Parasitized"** (infected with malaria) or **"Uninfected"**. The model employed is a **Vision Transformer (ViT)**, specifically the `google/vit-base-patch16-224` pretrained model, which has been adapted for this binary classification task.
 
 **Methodology** ⚙️
@@ -37,3 +37,6 @@ Based on the results table above, several conclusions can be drawn:
 
 **Final Conclusion:**
 The best configuration in this series of tests was the **Adam optimizer** with a **learning rate of $10^{-4}$** and a **batch size of 32**. This setup successfully trained the Vision Transformer model to achieve an accuracy of **97.71%** on the test data, demonstrating its excellent capability in distinguishing between malaria-infected and uninfected cells.
+
+model : https://huggingface.co/docs/transformers/en/model_doc/vit#vision-transformer-vit
+dataset : https://www.kaggle.com/datasets/iarunava/cell-images-for-detecting-malaria
