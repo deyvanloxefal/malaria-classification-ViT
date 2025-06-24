@@ -43,9 +43,9 @@ Based on the execution of the `pso-tuning.ipynb` file, the PSO algorithm found t
 
 1.  **Manual Search Findings**: From the manual tests, the best configuration was **Test 3** (Adam Optimizer, Learning Rate $10^{-4}$, Batch Size 32), which yielded a test accuracy of **97.71%**. This result indicated that a lower learning rate and a smaller batch size were more effective.
 
-2.  **PSO Finds a Better Solution**: The **PSO algorithm successfully found a superior configuration** compared to the manual search results. With an even lower learning rate ($9.2 \times 10^{-5}$) and a smaller batch size (32), the model was able to achieve a higher test accuracy of **97.97%**.
+2.  **PSO Finds a Better Solution**: The **PSO algorithm successfully found a superior configuration** compared to the manual search results. With an even lower learning rate ($9.2 \times 10^{-5}$) and batch size (32), the model was able to achieve a higher test accuracy of **97.97%**.
 
-3.  **The Power of Optimization**: The improvement from 97.71% to 97.97% demonstrates that automated hyperparameter search methods like PSO can explore the search space more granularly and find a "sweet spot" that is difficult to locate through manual testing. PSO proved that a more patient approach (very low learning rate) with more frequent weight updates (small batch size) was highly effective for this task.
+3.  **The Power of Optimization**: The improvement from 97.71% to 97.97% demonstrates that automated hyperparameter search methods like PSO can explore the search space more granularly and find a "sweet spot" that is difficult to locate through manual testing. PSO proved that a more patient approach (very low learning rate) was highly effective for this task.
 
 **Final Conclusion:**
 The implementation of **Particle Swarm Optimization (PSO)** significantly improved the performance of the Vision Transformer model. The configuration found by PSO (Optimizer **Adam**, Learning Rate **$9.2 \times 10^{-5}$**, Batch Size **32**) proved to be the best, achieving an accuracy of **97.97%** on the test data. This proves that combining an advanced architecture like Vision Transformer with a metaheuristic optimization technique like PSO is a very powerful approach to achieving state-of-the-art results in medical image classification tasks.
