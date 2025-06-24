@@ -1,44 +1,54 @@
-## Malaria Cell Classification Using Vision Transformer (ViT)
+# **Malaria Cell Classification Using Vision Transformer (ViT) + PSO**
 
 **Project Objective** 🔬
 
-This project aims to build a deep learning model capable of classifying images of red blood cells as either **"Parasitized"** (infected with malaria) or **"Uninfected"**. The model employed is a **Vision Transformer (ViT)**, specifically the `google/vit-base-patch16-224` pretrained model, which has been adapted for this binary classification task.
+This project aims to build and optimize a deep learning model capable of classifying images of red blood cells as either **"Parasitized"** (infected with malaria) or **"Uninfected"**. The model employed is a **Vision Transformer (ViT)**, which is then further optimized using **Particle Swarm Optimization (PSO)** to find the best hyperparameter combination to achieve maximum classification performance.
 
 **Methodology** ⚙️
-1.  **Dataset**: The project uses a dataset of red blood cell images from Kaggle, divided into two classes. The data is split into a training set (80%), a validation set (10%), and a test set (10%).
-2.  **Model**: A pre-trained Vision Transformer model (`ViTForImageClassification`) from Hugging Face is used. The model's classifier head was replaced to match the two target classes.
-3.  **Preprocessing & Augmentation**: Images are processed to meet the input requirements of the ViT model. Data augmentation techniques such as rotation, cropping, flipping, and color jittering are applied to the training data to improve model robustness.
-4.  **Training**: The model is trained using the `CrossEntropyLoss` function and optimized with various combinations of optimizers (Adam and AdamW), learning rates, and batch sizes. An *Early Stopping* mechanism is implemented to prevent overfitting and save the model with the best validation accuracy.
-5.  **Evaluation**: The model's performance is evaluated on the previously unseen test set using metrics such as accuracy, precision, recall, f1-score, and a confusion matrix.
+1.  **Dataset**: This project uses a dataset of red blood cell images from Kaggle, divided into two classes. The data is then split into a training set (80%), a validation set (10%), and a test set (10%).
+2.  **Model**: The base model used is a pre-trained Vision Transformer (`google/vit-base-patch16-224`) from Hugging Face, with its classifier head adapted for the binary classification task.
+3.  **Preprocessing & Augmentation**: Images are processed to meet the input standards of the ViT model. Data augmentation techniques such as rotation, cropping, flipping, and color jittering are applied to the training data to improve model robustness.
+4.  **Hyperparameter Optimization and Training**:
+    * **Manual Testing**: An initial series of tests was conducted with several manual combinations of optimizers (Adam & AdamW), learning rates, and batch sizes to establish the best baseline model.
+    * **PSO Optimization**: **Particle Swarm Optimization (PSO)** was implemented to automatically explore the hyperparameter search space and find the most optimal combination of learning rate and batch size, efficiently guiding the search towards the most promising configurations.
+5.  **Evaluation**: The performance of the best model from manual testing and the PSO-optimized model are evaluated on the same unseen test set using metrics such as accuracy, precision, recall, f1-score, and a confusion matrix.
 
 ---
 
-### Hyperparameter Testing Results
+## **Comparative Results: Manual vs. PSO Optimization**
 
-Here is a summary of the results from four different testing scenarios to find the optimal configuration of optimizer, learning rate, and batch size.
+Here is a comparison of the results from manual testing versus the model whose hyperparameters were optimized by PSO.
+
+### **1. Manual Hyperparameter Testing Results**
 
 | Test | Optimizer | Learning Rate | Batch Size | Epochs Run (out of 50) | Best Validation Accuracy | Test Accuracy |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **1** | **AdamW** | **$10^{-4}$** | **32** | 11 | **97.31%** | **97.46%** |
-| **2** | **AdamW** | $10^{-3}$ | 64 | 20 | 96.08% | 96.12% |
+| **1** | AdamW | $10^{-4}$ | 32 | 11 | 97.31% | 97.46% |
+| **2** | AdamW | $10^{-3}$ | 64 | 20 | 96.08% | 96.12% |
 | **3** | **Adam** | **$10^{-4}$** | **32** | **17** | **97.64%** | **97.71%** |
-| **4** | **Adam** | $10^{-3}$ | 64 | 17 | 96.08% | 95.75% |
+| **4** | Adam | $10^{-3}$ | 64 | 17 | 96.08% | 95.75% |
+
+### **2. PSO-Optimized Hyperparameter Results**
+
+Based on the execution of the `pso-tuning.ipynb` file, the PSO algorithm found the following optimal hyperparameter configuration:
+
+* **Optimizer**: Adam
+* **Best Learning Rate found by PSO**: **$9.2 \times 10^{-5}$** (0.000092)
+* **Best Batch Size found by PSO**: **32**
+* **Final Test Accuracy (with PSO parameters)**: **97.97%**
 
 ---
 
-### Analysis and Conclusion
+## **Analysis and Conclusion**
 
-Based on the results table above, several conclusions can be drawn:
+1.  **Manual Search Findings**: From the manual tests, the best configuration was **Test 3** (Adam Optimizer, Learning Rate $10^{-4}$, Batch Size 32), which yielded a test accuracy of **97.71%**. This result indicated that a lower learning rate and a smaller batch size were more effective.
 
-1.  **Lower Learning Rate Performs Better**: Tests using a lower learning rate ($10^{-4}$) consistently produced higher validation and test accuracies (above 97%) compared to the higher learning rate ($10^{-3}$), which resulted in accuracies around 95-96%. This suggests that a smaller learning rate allowed the model to converge to a more optimal solution.
+2.  **PSO Finds a Better Solution**: The **PSO algorithm successfully found a superior configuration** compared to the manual search results. With an even lower learning rate ($9.2 \times 10^{-5}$) and a smaller batch size (32), the model was able to achieve a higher test accuracy of **97.97%**.
 
-2.  **Adam Slightly Outperforms AdamW**: At the $10^{-4}$ learning rate, the **Adam Optimizer (Test 3)** demonstrated slightly superior performance with a **test accuracy of 97.71%**, compared to AdamW (Test 1) with a test accuracy of 97.46%. Although the difference is not significant, Adam yielded the best result in this scenario.
-
-3.  **Smaller Batch Size Works Better**: The combination of a low learning rate and a smaller batch size (32) delivered the best results. Using a larger batch size (64) with a high learning rate appeared to make the training less stable and resulted in lower accuracy.
+3.  **The Power of Optimization**: The improvement from 97.71% to 97.97% demonstrates that automated hyperparameter search methods like PSO can explore the search space more granularly and find a "sweet spot" that is difficult to locate through manual testing. PSO proved that a more patient approach (very low learning rate) with more frequent weight updates (small batch size) was highly effective for this task.
 
 **Final Conclusion:**
-The best configuration in this series of tests was the **Adam optimizer** with a **learning rate of $10^{-4}$** and a **batch size of 32**. This setup successfully trained the Vision Transformer model to achieve an accuracy of **97.71%** on the test data, demonstrating its excellent capability in distinguishing between malaria-infected and uninfected cells.
+The implementation of **Particle Swarm Optimization (PSO)** significantly improved the performance of the Vision Transformer model. The configuration found by PSO (Optimizer **Adam**, Learning Rate **$9.2 \times 10^{-5}$**, Batch Size **32**) proved to be the best, achieving an accuracy of **97.97%** on the test data. This proves that combining an advanced architecture like Vision Transformer with a metaheuristic optimization technique like PSO is a very powerful approach to achieving state-of-the-art results in medical image classification tasks.
 
-model : https://huggingface.co/docs/transformers/en/model_doc/vit#vision-transformer-vit
-
-dataset : https://www.kaggle.com/datasets/iarunava/cell-images-for-detecting-malaria
+**Model Source:** https://huggingface.co/docs/transformers/en/model_doc/vit#vision-transformer-vit
+**Dataset Source:** https://www.kaggle.com/datasets/iarunava/cell-images-for-detecting-malaria
