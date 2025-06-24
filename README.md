@@ -51,4 +51,5 @@ Based on the execution of the `pso-tuning.ipynb` file, the PSO algorithm found t
 The implementation of **Particle Swarm Optimization (PSO)** significantly improved the performance of the Vision Transformer model. The configuration found by PSO (Optimizer **Adam**, Learning Rate **$9.2 \times 10^{-5}$**, Batch Size **32**) proved to be the best, achieving an accuracy of **97.97%** on the test data. This proves that combining an advanced architecture like Vision Transformer with a metaheuristic optimization technique like PSO is a very powerful approach to achieving state-of-the-art results in medical image classification tasks.
 
 **Model Source:** https://huggingface.co/docs/transformers/en/model_doc/vit#vision-transformer-vit
+
 **Dataset Source:** https://www.kaggle.com/datasets/iarunava/cell-images-for-detecting-malaria
