@@ -23,9 +23,9 @@ Here is a comparison of the results from manual testing versus the model whose h
 
 | Test | Optimizer | Learning Rate | Batch Size | Epochs Run (out of 50) | Best Validation Accuracy | Test Accuracy |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **1** | AdamW | $10^{-4}$ | 32 | 11 | 97.31% | 97.46% |
-| **2** | AdamW | $10^{-3}$ | 64 | 20 | 96.08% | 96.12% |
-| **3** | **Adam** | **$10^{-4}$** | **32** | **17** | **97.64%** | **97.71%** |
+| **1** | **Adam** | **$10^{-4}$** | **32** | **17** | **97.64%** | **97.71%** |
+| **2** | AdamW | $10^{-4}$ | 32 | 11 | 97.31% | 97.46% |
+| **3** | AdamW | $10^{-3}$ | 64 | 20 | 96.08% | 96.12% |
 | **4** | Adam | $10^{-3}$ | 64 | 17 | 96.08% | 95.75% |
 
 ### **2. PSO-Optimized Hyperparameter Results**
