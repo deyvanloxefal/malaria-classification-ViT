@@ -1,4 +1,4 @@
-# **Malaria Cell Classification Using Vision Transformer (ViT) + PSO**
+# **Malaria Classification in Blood Cell Images using Vision Transformer (ViT) with Particle Swarm Optimization (PSO) Hyperparameter Optimization**
 
 **Project Objective** 🔬
 
