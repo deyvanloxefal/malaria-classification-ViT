@@ -5,7 +5,7 @@
 This project aims to build and optimize a deep learning model capable of classifying images of red blood cells as either **"Parasitized"** (infected with malaria) or **"Uninfected"**. The model employed is a **Vision Transformer (ViT)**, which is then further optimized using **Particle Swarm Optimization (PSO)** to find the best hyperparameter combination to achieve maximum classification performance.
 
 **Methodology** ⚙️
-1.  **Dataset**: This project uses a dataset of red blood cell images from Kaggle, divided into two classes. The data is then split into a training set (80%), a validation set (10%), and a test set (10%).
+1.  **Dataset**: This project uses a dataset of red blood cell images, divided into two classes. The data is then split into a training set (80%), a validation set (10%), and a test set (10%).
 2.  **Model**: The base model used is a pre-trained Vision Transformer (`google/vit-base-patch16-224`) from Hugging Face, with its classifier head adapted for the binary classification task.
 3.  **Preprocessing & Augmentation**: Images are processed to meet the input standards of the ViT model. Data augmentation techniques such as rotation, cropping, flipping, and color jittering are applied to the training data to improve model robustness.
 4.  **Hyperparameter Optimization and Training**:
