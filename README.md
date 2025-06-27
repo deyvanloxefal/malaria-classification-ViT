@@ -41,7 +41,7 @@ Based on the execution of the `pso-tuning.ipynb` file, the PSO algorithm found t
 
 ## **Analysis and Conclusion**
 
-1.  **Manual Search Findings**: From the manual tests, the best configuration was **Test 3** (Adam Optimizer, Learning Rate $10^{-4}$, Batch Size 32), which yielded a test accuracy of **97.71%**. This result indicated that a lower learning rate and a smaller batch size were more effective.
+1.  **Manual Search Findings**: From the manual tests, the best configuration was **Test 1** (Adam Optimizer, Learning Rate $10^{-4}$, Batch Size 32), which yielded a test accuracy of **97.71%**. This result indicated that a lower learning rate and a smaller batch size were more effective.
 
 2.  **PSO Finds a Better Solution**: The **PSO algorithm successfully found a superior configuration** compared to the manual search results. With an even lower learning rate ($9.2 \times 10^{-5}$) and batch size (32), the model was able to achieve a higher test accuracy of **97.97%**.
 
